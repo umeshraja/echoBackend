@@ -28,4 +28,7 @@ public interface PartRepository extends JpaRepository<Part, String> {
 
     @Query("SELECT NEW com.backendbigdata.dto.response.PartDescription(p.pId, p.description) FROM Part p, Category c WHERE c.cId = :categoryId AND c.cId = p.category.cId")
     List<PartDescription> getPartsByCategory(@Param("categoryId") Integer categoryId);
+
+    @Query("SELECT NEW com.backendbigdata.dto.response.PartDescription(p.pId, p.description) FROM Part p, Category c WHERE c.cId = :categoryId AND c.cId = p.category.cId AND p.countryOfOrigin.cooId = :cooId")
+    List<PartDescription> getPartsByCategoryAndCoo(@Param("categoryId") Integer categoryId, @Param("cooId") String cooId);
 }

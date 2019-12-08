@@ -90,4 +90,9 @@ public class APIController extends BaseController{
     public ResponseEntity<RestResponseDto> getPartsByCategory(@PathVariable("categoryId") Integer categoryId){
         return response(partService.getPartsByCategory(categoryId));
     }
+
+    @GetMapping("partsByCategoryAndCoo/{categoryId}/{cooId}")
+    public ResponseEntity<RestResponseDto> getPartsByCategoryAndCoo(@PathVariable("categoryId") Integer categoryId, @PathVariable("cooId") String cooId){
+        return response(partService.getPartsByCategoryAndCoo(categoryId,cooId));
+    }
 }

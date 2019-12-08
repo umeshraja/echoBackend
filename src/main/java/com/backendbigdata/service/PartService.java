@@ -56,4 +56,14 @@ public class PartService {
 
         return restResponseDto;
     }
+
+    public RestResponseDto getPartsByCategoryAndCoo(Integer categoryId, String cooId) {
+        RestResponseDto restResponseDto = new RestResponseDto();
+
+        List<PartDescription> partsDescriptionList = partRepository.getPartsByCategoryAndCoo(categoryId,cooId);
+
+        restResponseDto.makeSuccessResponse(new ProductsByCategory(partsDescriptionList,partsDescriptionList.size()));
+
+        return restResponseDto;
+    }
 }
