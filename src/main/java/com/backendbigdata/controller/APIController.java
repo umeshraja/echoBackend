@@ -1,10 +1,7 @@
 package com.backendbigdata.controller;
 
 import com.backendbigdata.dto.RestResponseDto;
-import com.backendbigdata.service.COOService;
-import com.backendbigdata.service.CategoryService;
-import com.backendbigdata.service.PartService;
-import com.backendbigdata.service.VendorService;
+import com.backendbigdata.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,6 +22,9 @@ public class APIController extends BaseController{
 
     @Autowired
     PartService partService;
+
+    @Autowired
+    ChatService chatService;
 
     @GetMapping("/categories")
     public ResponseEntity<RestResponseDto> getAllCategories(){
@@ -94,5 +94,35 @@ public class APIController extends BaseController{
     @GetMapping("partsByCategoryAndCoo/{categoryId}/{cooId}")
     public ResponseEntity<RestResponseDto> getPartsByCategoryAndCoo(@PathVariable("categoryId") Integer categoryId, @PathVariable("cooId") String cooId){
         return response(partService.getPartsByCategoryAndCoo(categoryId,cooId));
+    }
+
+    @GetMapping("mostActiveUser")
+    public ResponseEntity<RestResponseDto> getMostActiveUser(){
+        return response(chatService.getMostActiveUser());
+    }
+
+    @GetMapping("leastActiveUser")
+    public ResponseEntity<RestResponseDto> getLeastActiveUser(){
+        return response(chatService.getLeastActiveUser());
+    }
+
+    @GetMapping("mostActiveInitiator")
+    public ResponseEntity<RestResponseDto> getMostActiveInitiator(){
+        return response(chatService.getMostActiveInitiator());
+    }
+
+    @GetMapping("mostActiveChatter")
+    public ResponseEntity<RestResponseDto> getMostActiveChatter(){
+        return response(chatService.getMostActiveChatter());
+    }
+
+    @GetMapping("mostActiveOppChatter")
+    public ResponseEntity<RestResponseDto> getMostActiveOppChatter(){
+        return response(chatService.getMostActiveOppChatter());
+    }
+
+    @GetMapping("mostActiveCaseChatter")
+    public ResponseEntity<RestResponseDto> getMostActiveCaseChatter(){
+        return response(chatService.getMostActiveCaseChatter());
     }
 }
