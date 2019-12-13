@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication(scanBasePackages = {"com.backendbigdata"})
 @EntityScan(basePackages = {"com.backendbigdata.model"})
-//@EnableJpaRepositories(basePackages = {"com.backendbigdata.repository"})
 @EnableTransactionManagement
 @EnableAspectJAutoProxy(proxyTargetClass = true)
 public class Main {
